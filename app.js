@@ -4,6 +4,15 @@ var server;
 
 server = http.createServer();
 server.listen(8080);
+
+server.on('listening', function() {
+    console.log('Listening 8080 ...');
+});
+
+server.on('connection', function() {
+    console.log('Connect ... ');
+});
+
 server.on('request', function(req, res){
 
 
@@ -18,7 +27,7 @@ server.on('request', function(req, res){
 
 });
 
-server.on('listening', function() {
-    console.log('Listening 8080');
+server.on('request', function(req, res){
+    console.log('request:', req.method, req.url);
+    console.log('STATUS:', res.statusCode);
 });
-
